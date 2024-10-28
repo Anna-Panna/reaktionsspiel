@@ -9,18 +9,18 @@ input.onButtonEvent(Button.A, input.buttonEventClick(), function () {
     basic.pause(1000)
 })
 input.onButtonEvent(Button.B, input.buttonEventClick(), function () {
-    if (Zufall == 1) {
+    if (Zufall == 2) {
         punkte += 1
         basic.showIcon(IconNames.Yes)
     } else {
-        punkte += -1
+        leben += -1
         basic.showIcon(IconNames.No)
     }
     basic.pause(1000)
 })
 function anzeige () {
-    Zufall = randint(0, 1)
-    if (Zufall == 0) {
+    Zufall = randint(1, 2)
+    if (Zufall == 1) {
         basic.showLeds(`
             . . # . .
             . . # . .
@@ -28,7 +28,8 @@ function anzeige () {
             . . # . .
             . . # . .
             `)
-    } else {
+    }
+    if (Zufall == 2) {
         basic.showLeds(`
             . . # . .
             . . # . .
@@ -46,8 +47,13 @@ function anzeige () {
         . . # . .
         `)
 }
+function gameover () {
+    basic.showString("Game over")
+    basic.showString("Punkte:" + punkte)
+}
 let Zufall = 0
 let punkte = 0
+punkte = 0
 let leben = 3
 basic.showNumber(3)
 basic.showNumber(2)
@@ -60,9 +66,12 @@ basic.forever(function () {
     if (leben == 2) {
         basic.setLedColors(0xff0000, 0x00ff00, 0xffffff)
     }
-    anzeige()
     if (leben == 1) {
         basic.setLedColors(0xff0000, 0xffffff, 0xffffff)
     }
     anzeige()
+    if (leben == 0) {
+        basic.turnRgbLedOff()
+        gameover()
+    }
 })
