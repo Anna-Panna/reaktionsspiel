@@ -48,8 +48,8 @@ function anzeige () {
         `)
 }
 function gameover () {
-    basic.showString("Game over")
-    basic.showString("Punkte:" + punkte)
+    basic.showString("GAME OVER!")
+    basic.showString("Score:" + punkte)
 }
 let Zufall = 0
 let punkte = 0
@@ -61,15 +61,16 @@ basic.showNumber(1)
 basic.forever(function () {
     if (leben == 3) {
         basic.setLedColors(0xff0000, 0x00ff00, 0xff00ff)
+        anzeige()
     }
-    anzeige()
     if (leben == 2) {
-        basic.setLedColors(0xff0000, 0x00ff00, 0xffffff)
+        basic.setLedColors(0xff0000, 0x00ff00, 0x000000)
+        anzeige()
     }
     if (leben == 1) {
-        basic.setLedColors(0xff0000, 0xffffff, 0xffffff)
+        basic.setLedColors(0xff0000, 0x000000, 0x000000)
+        anzeige()
     }
-    anzeige()
     if (leben == 0) {
         basic.turnRgbLedOff()
         gameover()
