@@ -49,7 +49,7 @@ function anzeige () {
 }
 function gameover () {
     basic.showString("GAME OVER!")
-    basic.showString("Score:" + punkte)
+    basic.showString("SOCORE:" + punkte)
 }
 let Zufall = 0
 let punkte = 0
