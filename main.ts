@@ -60,7 +60,7 @@ basic.showNumber(2)
 basic.showNumber(1)
 basic.forever(function () {
     if (leben == 3) {
-        basic.setLedColors(0xff0000, 0x00ff00, 0xff00ff)
+        basic.setLedColors(0xff0000, 0x00ff00, 0x7f00ff)
         anzeige()
     }
     if (leben == 2) {
